@@ -27,5 +27,14 @@ module.exports = {
         middlewares: [],
       },
     },
+    {
+      method: 'POST',
+      path: '/career-email',
+      handler: 'mailer.sendForCareerForm',
+      config: {
+        policies: [],
+        middlewares: [],
+      },
+    },
   ],
 };
