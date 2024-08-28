@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 // Send email function
 async function sendEmail(to, subject, text, attachments = []) {
   const mailOptions = {
-    from: `"Ad-Nouveau" <${process.env.GMAIL_USER}>`, // Sender address
+    from: `"Aspower Notification" <${process.env.GMAIL_USER}>`, // Sender address
     to: to,  // List of recipients
     subject: subject,  // Subject line
     text: text,  // Plain text body
