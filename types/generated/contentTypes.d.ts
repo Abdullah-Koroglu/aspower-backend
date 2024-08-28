@@ -788,6 +788,73 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiCatalogueCatalogue extends Schema.CollectionType {
+  collectionName: 'catalogues';
+  info: {
+    singularName: 'catalogue';
+    pluralName: 'catalogues';
+    displayName: 'Katalog';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    catalogue: Attribute.String;
+    language: Attribute.String;
+    Dosya: Attribute.Media<'files'> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::catalogue.catalogue',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::catalogue.catalogue',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCertificateCertificate extends Schema.CollectionType {
+  collectionName: 'certificates';
+  info: {
+    singularName: 'certificate';
+    pluralName: 'certificates';
+    displayName: 'Sertifika';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Dokuman: Attribute.Media<'files'> & Attribute.Required;
+    Sertifika: Attribute.String;
+    tip: Attribute.Enumeration<['sertifika', 'belge']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'sertifika'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::certificate.certificate',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::certificate.certificate',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -806,6 +873,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::catalogue.catalogue': ApiCatalogueCatalogue;
+      'api::certificate.certificate': ApiCertificateCertificate;
     }
   }
 }
