@@ -57,7 +57,7 @@ module.exports = {
     `;
 
     // Send the email
-    await sendEmail(email, subject, messageContent);
+    await sendEmail('teklif@aspower.com.tr', subject, messageContent);
 
     // Return a response
     return ctx.send({ message: 'Email sent successfully!' });
@@ -109,7 +109,7 @@ module.exports = {
         ];
       }
 
-    await sendEmail(email, 'Support Form Submission', message, attachments);
+    await sendEmail('servis@aspower.com.tr', 'Support Form Submission', message, attachments);
 
     return ctx.send({ message: 'Email sent successfully!' });
   }, 
@@ -159,7 +159,7 @@ module.exports = {
       ];
     }
 
-    await sendEmail(email, 'Career Form Submission', messageContent, attachments);
+    await sendEmail('ik@aspower.com.tr', 'Career Form Submission', messageContent, attachments);
 
     return ctx.send({ message: 'Email sent successfully!' });
   }
