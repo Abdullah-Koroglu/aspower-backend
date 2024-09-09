@@ -7,7 +7,7 @@ module.exports = [
     config: {
       enabled: true,
       headers: '*',
-      origin: ['https://aspower.com.tr'],
+      origin: ['https://aspower.com.tr', 'https://www.aspower.com.tr'],
     },
   },
   'strapi::poweredBy',
