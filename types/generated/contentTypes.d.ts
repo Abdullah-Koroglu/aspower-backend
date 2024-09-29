@@ -819,7 +819,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    banner: Attribute.Media<'images'> &
+    Banner: Attribute.Media<'images'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

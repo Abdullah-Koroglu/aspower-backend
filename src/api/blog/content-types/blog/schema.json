@@ -34,7 +34,7 @@
         }
       }
     },
-    "banner": {
+    "Banner": {
       "type": "media",
       "multiple": false,
       "required": false,
