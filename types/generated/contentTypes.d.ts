@@ -916,34 +916,106 @@ export interface ApiCertificateCertificate extends Schema.CollectionType {
   };
 }
 
-export interface ApiProductTypeProductType extends Schema.CollectionType {
-  collectionName: 'product_types';
+export interface ApiProductProduct extends Schema.CollectionType {
+  collectionName: 'products';
   info: {
-    singularName: 'product-type';
-    pluralName: 'product-types';
-    displayName: 'ProductType';
+    singularName: 'product';
+    pluralName: 'products';
+    displayName: 'Product';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
   };
   attributes: {
-    slug: Attribute.String;
-    name: Attribute.String;
+    Title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    body: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Banner: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Images: Attribute.Media<'images', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    DataSheet: Attribute.Media<'files'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Type: Attribute.Enumeration<
+      [
+        'dc-arac-sarj-sistemi',
+        'ac-arac-sarj-sistemi',
+        'mobil-sarj-sistemi',
+        'kesintisiz-guc-kaynagi',
+        'frekans-konvertoru',
+        'redresor-aku-sarj-cihazi',
+        'invertorler',
+        'regulatorler',
+        'aku-ve-aksesuarlar',
+        'ozel-cozumler'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'dc-arac-sarj-sistemi'>;
+    BodyImages: Attribute.Media<'images', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::product-type.product-type',
+      'api::product.product',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::product-type.product-type',
+      'api::product.product',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::product.product'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -968,7 +1040,7 @@ declare module '@strapi/types' {
       'api::blog.blog': ApiBlogBlog;
       'api::catalogue.catalogue': ApiCatalogueCatalogue;
       'api::certificate.certificate': ApiCertificateCertificate;
-      'api::product-type.product-type': ApiProductTypeProductType;
+      'api::product.product': ApiProductProduct;
     }
   }
 }
