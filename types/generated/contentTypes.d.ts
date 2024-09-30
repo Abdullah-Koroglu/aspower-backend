@@ -855,14 +855,15 @@ export interface ApiCatalogueCatalogue extends Schema.CollectionType {
     singularName: 'catalogue';
     pluralName: 'catalogues';
     displayName: 'Katalog';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    catalogue: Attribute.String;
-    language: Attribute.String;
     Dosya: Attribute.Media<'files'> & Attribute.Required;
+    catalogue: Attribute.Enumeration<['evc', 'family']>;
+    language: Attribute.Enumeration<['tr', 'en', 'ru']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
