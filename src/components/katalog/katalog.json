@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_katalog_katalogs",
+  "info": {
+    "displayName": "Katalog",
+    "icon": "folder",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Language": {
+      "type": "enumeration",
+      "enum": [
+        "tr",
+        "en",
+        "ru"
+      ],
+      "required": true,
+      "default": "tr"
+    },
+    "Dosya": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    }
+  }
+}

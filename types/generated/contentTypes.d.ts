@@ -861,9 +861,15 @@ export interface ApiCatalogueCatalogue extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Dosya: Attribute.Media<'files'> & Attribute.Required;
-    catalogue: Attribute.Enumeration<['evc', 'family']>;
-    language: Attribute.Enumeration<['tr', 'en', 'ru']>;
+    Title: Attribute.String;
+    katalog: Attribute.Component<'katalog.katalog', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 3;
+        },
+        number
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

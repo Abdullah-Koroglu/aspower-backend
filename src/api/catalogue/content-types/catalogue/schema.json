@@ -12,28 +12,17 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Dosya": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "files"
-      ]
+    "Title": {
+      "type": "string",
+      "required": false
     },
-    "catalogue": {
-      "type": "enumeration",
-      "enum": [
-        "evc",
-        "family"
-      ]
-    },
-    "language": {
-      "type": "enumeration",
-      "enum": [
-        "tr",
-        "en",
-        "ru"
-      ]
+    "katalog": {
+      "displayName": "Katalog",
+      "type": "component",
+      "repeatable": true,
+      "component": "katalog.katalog",
+      "min": 3,
+      "required": true
     }
   }
 }
